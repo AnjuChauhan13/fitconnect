@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CreatePost from './components/CreatePost'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/profile" element={<Profile />} />
+        <Route path ="/createpost"   element={<CreatePost/>}/>
 
 
 

@@ -4,10 +4,9 @@ const Register=()=>{
     const[username,setUsername]=useState("");
     const[email,setEmail]=useState("");
     const[password,setassword]=useState("");
-     const [confirmPassword, setConfirmPassword]=useState("");
+    const [confirmPassword, setConfirmPassword]=useState("");
 
     const handleRegister = async () => {
-      console.log(password,"p")
 
     const response = await fetch(
         "http://127.0.0.1:8000/api/accounts/register/",
