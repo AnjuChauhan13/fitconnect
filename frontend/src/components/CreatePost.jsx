@@ -16,20 +16,15 @@ const handlePost = async () => {
     formData.append("content", content);
     formData.append("images", image);
 
-    // Step 3: Send request
-    const response = await fetch(
-        "http://127.0.0.1:8000/api/post/",
-        {
-            method: "POST",
+    const response = await api.post("/api/post/", formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
-            body: formData,
-        }
-    );
+        });
 
     const data = await response.json();
     console.log(data);
+    
 };
 return(
     <>

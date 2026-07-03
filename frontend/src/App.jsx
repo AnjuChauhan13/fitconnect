@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CreatePost from './components/CreatePost'
+import DisplayPost from './components/DisplayPost'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 
         <Route path="/profile" element={<Profile />} />
         <Route path ="/createpost"   element={<CreatePost/>}/>
+        <Route path='/showpost' element={<DisplayPost/>}/>
 
 
 
