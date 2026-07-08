@@ -6,28 +6,28 @@ const Register=()=>{
     const[password,setassword]=useState("");
     const [confirmPassword, setConfirmPassword]=useState("");
 
-    const handleRegister = async () => {
+ const handleRegister = async () => {
+    try {
+        const response = await api.post("/api/accounts/register/", {
+            username,
+            email,
+            password,
+            confirmPassword,
+        });
 
-    const response = await fetch(
-        "http://127.0.0.1:8000/api/accounts/register/",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password,
-                confirmPassword:confirmPassword
-            })
+        console.log(response.data);
+
+        // Optional
+        alert("Registration Successful!");
+
+    } catch (error) {
+        console.error(error);
+
+        if (error.response) {
+            console.log(error.response.data);
         }
-    );
-
-    const data = await response.json();
-
-    console.log(data);
-}
+    }
+};
     return(
         <>
         <div>

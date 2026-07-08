@@ -7,29 +7,19 @@ const Login=()=>{
    
 
 const handleClick = async () => {
-  const response = await fetch(
-    "http://127.0.0.1:8000/api/token/",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    }
-  );
+  try {
+    const response = await api.post("/api/token/", {
+      username,
+      password,
+    });
 
-  const data = await response.json();
+    localStorage.setItem("access", response.data.access);
+    localStorage.setItem("refresh", response.data.refresh);
 
-  if (response.ok) {
-    localStorage.setItem("access", data.access);
-    localStorage.setItem("refresh", data.refresh);
-
-    setMessage("Login Successful ");
-  } else {
-    setMessage("Invalid Username or Password ");
+    setMessage("Login Successful");
+  } catch (error) {
+    setMessage("Invalid Username or Password");
+    console.error(error);
   }
 };
 

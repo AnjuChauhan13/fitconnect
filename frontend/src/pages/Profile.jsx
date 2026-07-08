@@ -7,24 +7,22 @@ const Profile = () => {
     const [profile,setProfile]=useState("");
 
 
-    const fetchProfile = async () => {
-
+ const fetchProfile = async () => {
     const token = localStorage.getItem("access");
 
-    const response = await fetch(
-        "http://127.0.0.1:8000/api/accounts/profile/",
-        {
+    try {
+        const response = await api.get("/api/accounts/profile/", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
-        }
-    );
+        });
 
-    const data = await response.json();
+        console.log(response.data);
+        setProfile(response.data);
 
-    console.log(data);
-
-    setProfile(data);
+    } catch (error) {
+        console.error(error);
+    }
 };
 useEffect(() => {
     fetchProfile();
