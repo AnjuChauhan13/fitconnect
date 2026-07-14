@@ -1,5 +1,15 @@
-const Home = () => {
-  return <h1>Home Page</h1>;
-};
+import FitConnectLogin from "../components/FitConnectlogin";
 
-export default Home;
+
+export default function Home(){
+
+    return(
+
+        <div className="bg-slate-50 min-h-screen">
+
+           <FitConnectLogin/>
+        </div>
+
+    )
+
+}

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import api from "../api/api";
 
 
 const DisplayPost=()=>{

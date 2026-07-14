@@ -1,0 +1,15 @@
+<svg width="260" height="80" viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="34" fill="#F97316"/>
+  <circle cx="24" cy="40" r="4" fill="white"/>
+  <circle cx="56" cy="40" r="4" fill="white"/>
+  <path
+    d="M24 40h8l4-12 8 24 4-12h8"
+    stroke="white"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <text x="94" y="49" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1F2937" letter-spacing="0.5">Fit</text>
+  <text x="132" y="49" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#F97316" letter-spacing="0.5">Connect</text>
+</svg>

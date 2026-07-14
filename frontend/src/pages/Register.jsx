@@ -1,78 +1,88 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import registerUser from "../services/RegisterUser";
+import "./Register.css";
 
-const Register=()=>{
-    const[username,setUsername]=useState("");
-    const[email,setEmail]=useState("");
-    const[password,setassword]=useState("");
-    const [confirmPassword, setConfirmPassword]=useState("");
+const Register = () => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
- const handleRegister = async () => {
-    try {
-        const response = await api.post("/api/accounts/register/", {
-            username,
-            email,
-            password,
-            confirmPassword,
-        });
+    const navigate = useNavigate();
 
-        console.log(response.data);
+    const handleRegister = async (e) => {
+        e.preventDefault();
 
-        // Optional
-        alert("Registration Successful!");
+        try {
+            await registerUser({
+                username,
+                email,
+                password,
+                confirmPassword,
+            });
 
-    } catch (error) {
-        console.error(error);
+            alert("Registration Successful");
 
-        if (error.response) {
-            console.log(error.response.data);
+            navigate("/");
+
+        } catch (error) {
+            console.error(error);
+            alert("Registration Failed");
         }
-    }
-};
-    return(
-        <>
-        <div>
-            <h1>Register</h1>
-            <input
-            type="text"
-            placeholder="username"
-            value={username}
-            onChange={(e)=>setUsername(e.target.value)}
-            />
-            
-            <br /><br />
-            <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-        <br /><br />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+    };
 
-      <br /><br />
-      <input
-            type="text"
-            placeholder="confirm password"
-            value={confirmPassword}
-            onChange={(e)=>setConfirmPassword(e.target.value)}
-            />
-                        <br /><br />
+    return (
+        <div className="register-page">
+            <main className="register-main">
+                <div className="register-container">
+                    <div className="register-card">
+                        <h1 className="register-title">Register</h1>
 
-      <button onClick={handleRegister}>Register</button>
-            
+                        <form className="register-form" onSubmit={handleRegister}>
+
+                            <input
+                                className="register-input"
+                                type="text"
+                                placeholder="Username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+
+                            <input
+                                className="register-input"
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+
+                            <input
+                                className="register-input"
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+
+                            <input
+                                className="register-input"
+                                type="password"
+                                placeholder="Confirm Password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+
+                            <button className="register-button" type="submit">
+                                Register
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </main>
         </div>
-        
-        
-        
-        
-        </>
     );
+};
 
-
-}
 export default Register;
